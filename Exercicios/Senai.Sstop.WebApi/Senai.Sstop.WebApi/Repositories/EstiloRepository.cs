@@ -17,6 +17,55 @@ namespace Senai.Sstop.WebApi.Repositories
 
         private string StringConexao = "Data Source=.\\SqlExpress;initial catalog=M_SStop;User Id=sa;Pwd=132";
 
+        public void Cadastrar(EstiloDomain estilo)
+        {
+            string Query = "INSERT INTO EstilosMusicas (Nome) VALUES (@Nome)";
+
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                SqlCommand cmd = new SqlCommand(Query, con);
+
+                cmd.Parameters.AddWithValue("@Nome", estilo.Nome);
+                con.Open();
+
+                cmd.ExecuteNonQuery();
+
+
+            }
+        }
+
+        public EstiloDomain BuscarPorId(int id)
+        {
+            string Query = "SELECT IdEstiloMusical, Nome FROM EstilosMusicas WHERE IdEstiloMusical = @IdEstiloMusical";
+
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                con.Open();
+
+                SqlDataReader sdr;
+
+                using (SqlCommand cmd = new SqlCommand(Query, con))
+                {
+                    cmd.Parameters.AddWithValue("@IdEstiloMusical", id);
+                    sdr = cmd.ExecuteReader();
+
+                    if (sdr.HasRows)
+                    {
+                        while (sdr.Read())
+                        {
+                            EstiloDomain estilo = new EstiloDomain
+                            {
+                                IdEstilo = Convert.ToInt32(sdr["IdEstiloMusical"]),
+                                Nome = sdr["Nome"].ToString()
+                            };
+                            return estilo;
+                        }
+                    }
+                    return null;
+                }
+            }
+        }
+
         public List<EstiloDomain> Listar()
         {
             List<EstiloDomain> estilos = new List<EstiloDomain>();
@@ -32,7 +81,7 @@ namespace Senai.Sstop.WebApi.Repositories
                 using (SqlCommand cmd = new SqlCommand(Query, con))
                 {
                     rdr = cmd.ExecuteReader();
-                    while(rdr.Read())
+                    while (rdr.Read())
                     {
                         EstiloDomain estilo = new EstiloDomain
                         {
@@ -44,7 +93,36 @@ namespace Senai.Sstop.WebApi.Repositories
                 }
             }
 
-                return estilos;
+            return estilos;
+        }
+
+        public void Alterar(EstiloDomain estiloDomain)
+        {
+            string Query = "UPDATE EstilosMusicas SET Nome = @Nome WHERE IdEstiloMusical = @IdEstiloMusical";
+
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                SqlCommand cmd = new SqlCommand(Query, con);
+                cmd.Parameters.AddWithValue("@Nome", estiloDomain.Nome);
+                cmd.Parameters.AddWithValue("@IdEstiloMusical", estiloDomain.IdEstilo);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void Deletar(int id)
+        {
+            string Query = "DELETE FROM EstilosMusicas WHERE IdEstiloMusical = @IdEstiloMusical";
+
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                SqlCommand cmd = new SqlCommand(Query, con);
+                cmd.Parameters.AddWithValue("@IdEstiloMusical", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }
+
