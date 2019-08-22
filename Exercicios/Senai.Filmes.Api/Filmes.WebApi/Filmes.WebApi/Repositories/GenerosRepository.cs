@@ -38,5 +38,20 @@ namespace Filmes.WebApi.Repositories
             }
             return generos;
         }
+
+        public void Cadastrar(GenerosDomain generos)
+        {
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                string Query = "INSERT INTO Generos (Nome) VALUES (@Nome)";
+
+                SqlCommand cmd = new SqlCommand(Query, con);
+
+                cmd.Parameters.AddWithValue("@Nome", generos.Nome);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

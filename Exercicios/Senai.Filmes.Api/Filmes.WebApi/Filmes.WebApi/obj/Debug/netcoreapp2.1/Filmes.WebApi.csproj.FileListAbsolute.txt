@@ -1,0 +1,14 @@
+C:\Users\46748080819\Desktop\2s2019-sprint-2-api\2s2019-sprint2-api\Exercicios\Senai.Filmes.Api\Filmes.WebApi\Filmes.WebApi\bin\Debug\netcoreapp2.1\Filmes.WebApi.deps.json
+C:\Users\46748080819\Desktop\2s2019-sprint-2-api\2s2019-sprint2-api\Exercicios\Senai.Filmes.Api\Filmes.WebApi\Filmes.WebApi\bin\Debug\netcoreapp2.1\Filmes.WebApi.runtimeconfig.json
+C:\Users\46748080819\Desktop\2s2019-sprint-2-api\2s2019-sprint2-api\Exercicios\Senai.Filmes.Api\Filmes.WebApi\Filmes.WebApi\bin\Debug\netcoreapp2.1\Filmes.WebApi.runtimeconfig.dev.json
+C:\Users\46748080819\Desktop\2s2019-sprint-2-api\2s2019-sprint2-api\Exercicios\Senai.Filmes.Api\Filmes.WebApi\Filmes.WebApi\bin\Debug\netcoreapp2.1\Filmes.WebApi.dll
+C:\Users\46748080819\Desktop\2s2019-sprint-2-api\2s2019-sprint2-api\Exercicios\Senai.Filmes.Api\Filmes.WebApi\Filmes.WebApi\bin\Debug\netcoreapp2.1\Filmes.WebApi.pdb
+C:\Users\46748080819\Desktop\2s2019-sprint-2-api\2s2019-sprint2-api\Exercicios\Senai.Filmes.Api\Filmes.WebApi\Filmes.WebApi\obj\Debug\netcoreapp2.1\Filmes.WebApi.csprojAssemblyReference.cache
+C:\Users\46748080819\Desktop\2s2019-sprint-2-api\2s2019-sprint2-api\Exercicios\Senai.Filmes.Api\Filmes.WebApi\Filmes.WebApi\obj\Debug\netcoreapp2.1\Filmes.WebApi.csproj.CoreCompileInputs.cache
+C:\Users\46748080819\Desktop\2s2019-sprint-2-api\2s2019-sprint2-api\Exercicios\Senai.Filmes.Api\Filmes.WebApi\Filmes.WebApi\obj\Debug\netcoreapp2.1\Filmes.WebApi.RazorAssemblyInfo.cache
+C:\Users\46748080819\Desktop\2s2019-sprint-2-api\2s2019-sprint2-api\Exercicios\Senai.Filmes.Api\Filmes.WebApi\Filmes.WebApi\obj\Debug\netcoreapp2.1\Filmes.WebApi.RazorAssemblyInfo.cs
+C:\Users\46748080819\Desktop\2s2019-sprint-2-api\2s2019-sprint2-api\Exercicios\Senai.Filmes.Api\Filmes.WebApi\Filmes.WebApi\obj\Debug\netcoreapp2.1\Filmes.WebApi.AssemblyInfoInputs.cache
+C:\Users\46748080819\Desktop\2s2019-sprint-2-api\2s2019-sprint2-api\Exercicios\Senai.Filmes.Api\Filmes.WebApi\Filmes.WebApi\obj\Debug\netcoreapp2.1\Filmes.WebApi.AssemblyInfo.cs
+C:\Users\46748080819\Desktop\2s2019-sprint-2-api\2s2019-sprint2-api\Exercicios\Senai.Filmes.Api\Filmes.WebApi\Filmes.WebApi\obj\Debug\netcoreapp2.1\Filmes.WebApi.RazorTargetAssemblyInfo.cache
+C:\Users\46748080819\Desktop\2s2019-sprint-2-api\2s2019-sprint2-api\Exercicios\Senai.Filmes.Api\Filmes.WebApi\Filmes.WebApi\obj\Debug\netcoreapp2.1\Filmes.WebApi.dll
+C:\Users\46748080819\Desktop\2s2019-sprint-2-api\2s2019-sprint2-api\Exercicios\Senai.Filmes.Api\Filmes.WebApi\Filmes.WebApi\obj\Debug\netcoreapp2.1\Filmes.WebApi.pdb

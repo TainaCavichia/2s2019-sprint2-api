@@ -1,35 +1,32 @@
-﻿using Filmes.WebApi.Domains;
-using Filmes.WebApi.Repositories;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Senai.Sstop.WebApi.Domains;
+using Senai.Sstop.WebApi.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Filmes.WebApi.Controllers
+namespace Senai.Sstop.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [Produces("application/json")]
     [ApiController]
-
-    public class GenerosController : ControllerBase
+    public class ArtistasController : ControllerBase
     {
-        List<GenerosDomain> generos = new List<GenerosDomain>();
-
-        GenerosRepository generosRepository = new GenerosRepository();
+        ArtistaRepository artistaRepository = new ArtistaRepository();
 
         [HttpGet]
         public IActionResult Listar()
         {
-            return Ok(generosRepository.Listar());
+            return Ok(artistaRepository.Listar());
         }
 
         [HttpPost]
-        public IActionResult Cadastrar(GenerosDomain generos)
+        public IActionResult Cadastrar(ArtistaDomain artista)
         {
             try
             {
-                generosRepository.Cadastrar(generos);
+                artistaRepository.Cadastrar(artista);
                 return Ok();
             }
             catch(Exception ex)
