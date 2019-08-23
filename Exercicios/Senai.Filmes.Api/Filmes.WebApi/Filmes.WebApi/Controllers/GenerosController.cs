@@ -37,5 +37,33 @@ namespace Filmes.WebApi.Controllers
                 return BadRequest(new { mensagem = "Ocorreu um erro" + ex.Message });
             }
         }
+
+        [HttpGet("{id}")]
+        public IActionResult BuscarPorId(int id)
+        {
+            GenerosDomain genero = generosRepository.BuscarPorId(id);
+            if (genero == null)
+            {
+                return NotFound();
+            }
+            return Ok(genero);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Alterar(int id, GenerosDomain generoDomain)
+        {
+            generoDomain.IdGenero = id;
+            generosRepository.Alterar(generoDomain);
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Deletar(int id)
+        {
+            generosRepository.Deletar(id);
+            return Ok();
+        }
+
+
     }
 }
