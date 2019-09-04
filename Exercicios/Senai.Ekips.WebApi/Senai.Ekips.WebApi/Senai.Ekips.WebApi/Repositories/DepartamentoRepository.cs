@@ -1,4 +1,5 @@
-﻿using Senai.Ekips.WebApi.Domains;
+﻿using Microsoft.EntityFrameworkCore;
+using Senai.Ekips.WebApi.Domains;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,20 @@ namespace Senai.Ekips.WebApi.Repositories
             using (EkipsContext ctx = new EkipsContext())
             {
                 return ctx.Departamentos.ToList();
+            }
+        }
+        //public Departamentos ListarFuncionarios(int id)
+        //{
+        //    using (EkipsContext ctx = new EkipsContext())
+        //    {
+        //        return ctx.Departamentos.Where(x => x.Funcionarios)
+        //    }
+        //}
+        public List<Departamentos> ListarFuncionarios()
+        {
+            using (EkipsContext ctx = new EkipsContext())
+            {
+                return ctx.Departamentos.Include(x => x.Funcionarios).ToList();
             }
         }
         public Departamentos BuscarPorId(int id)

@@ -4,7 +4,9 @@ using Senai.Ekips.WebApi.Domains;
 using Senai.Ekips.WebApi.Repositories;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Senai.Ekips.WebApi.Controllers
@@ -15,13 +17,29 @@ namespace Senai.Ekips.WebApi.Controllers
     public class FuncionariosController : ControllerBase
     {
         FuncionarioRepository funcionarioRepository = new FuncionarioRepository();
-        [Authorize(Roles = "ADMINISTRADOR")]
+        
         [HttpGet]
+        [Authorize]
         public IActionResult Listar()
         {
-            return Ok(funcionarioRepository.Listar());
+            var currentUser = HttpContext.User;
+            if (currentUser.HasClaim(x => x.Type == ClaimTypes.Role))
+            {
+                var permissao = currentUser.Claims.First(x => x.Type == ClaimTypes.Role).Value;
+                int id = Convert.ToInt32(currentUser.Claims.First(x => x.Type == JwtRegisteredClaimNames.Jti).Value);
+                if ( permissao == "ADMINISTRADOR")
+                {
+                    return Ok(funcionarioRepository.Listar());
+                }
+                else if (permissao == "COMUM")
+                {
+                    return Ok(funcionarioRepository.ListarPorId(id));
+                }
+            }
+            return BadRequest();
         }
-        [Authorize(Roles = "ADMINISTRADOR")]
+
+        [Authorize(Roles = "COMUM")]
         [HttpGet("{id}")]
         public IActionResult BuscarPorId(int id)
         {
@@ -32,7 +50,7 @@ namespace Senai.Ekips.WebApi.Controllers
             }
             return Ok(funcionario);
         }
-        [Authorize(Roles = "ADMINISTRADOR")]
+        [Authorize(Roles = "COMUM")]
         [HttpPost]
         public IActionResult Cadastrar(Funcionarios funcionario)
         {
@@ -46,14 +64,14 @@ namespace Senai.Ekips.WebApi.Controllers
                 return BadRequest(new { mensagem = "Eita" + ex.Message });
             }
         }
-        [Authorize(Roles = "ADMINISTRADOR")]
+        [Authorize(Roles = "COMUM")]
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {
             funcionarioRepository.Deletar(id);
             return Ok();
         }
-        [Authorize(Roles = "ADMINISTRADOR")]
+        [Authorize(Roles = "COMUM")]
         [HttpPut]
         public IActionResult Atualizar(Funcionarios funcionario)
         {
